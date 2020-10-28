@@ -1,0 +1,9 @@
+/* components/componentPicker/componentPicker.wxss */
+.component-picker {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.component-picker-main {
+  width: 100%;
+}

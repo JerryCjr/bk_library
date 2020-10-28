@@ -1,0 +1,15 @@
+.DS_Store
+dist
+node_modules
+test/coverage/
+
+npm-debug.log*
+yarn-debug.log*
+<<<<<<< HEAD
+yarn-error.log*
+package-lock.json*
+test/coverage/
+npm-shrinkwrap.json
+=======
+yarn-error.log*
+>>>>>>> cdf30d85436e7fbe731d5b2e646953e8215fe84e

@@ -1,0 +1,106 @@
+/*
+ * @Author: MuNaipeng
+ * @Date: 2018-06-22 09:24:01
+ * @Last Modified by: MuNaipeng
+ * @Last Modified time: 2019-01-04 11:06:17
+ */
+import axios from 'axios';
+import env from 'babyfs-env';
+import getStaticParam from './device';
+let BURIED_URL = '/act/log/wx_h5',TOKEN_URL = '/api/user/get_user_token',APP = {};
+
+/**
+ * @description
+ * @author MuNaipeng
+ * @param {*} EV_NAME 事件名称
+ * @param {*} [OPS={}] 事件相关参数
+ * @param {*} uid userId
+ * @returns
+ */
+function commonBurid(EV_NAME, OPS = {}, uid = 0) {
+  let _ct = 0,
+    _EV_NAME = '',
+    ct = Date.parse(new Date()),
+    staticParams = getStaticParam(),
+    dataObj = Object.assign(
+      {
+        url: window.location.origin,
+        path: window.location.pathname
+      },
+      OPS
+    );
+  if (sessionStorage.getItem('_ct')) {
+    _ct = sessionStorage.getItem('_ct');
+    _EV_NAME = sessionStorage.getItem('_EV_NAME');
+  }
+  //一秒内点击多次视为恶意操作
+  if (EV_NAME === _EV_NAME && ct - _ct - 0 < 1000) return;
+  sessionStorage.setItem('_ct', ct);
+  sessionStorage.setItem('_EV_NAME', EV_NAME);
+  const myData = {
+    app_id: APP.appId,
+    uid: uid - 0,
+    events: [
+      {
+        ct: ct,
+        en: EV_NAME,
+        data: dataObj
+      }
+    ]
+  };
+  axios({
+    method: 'post',
+    url: BURIED_URL,
+    headers: {
+      'content-type': 'application/x-www-form-urlencoded',
+      'X-Static-Params': staticParams
+    },
+    data: myData
+  })
+  .then(res => res)
+  .catch(err => err);
+}
+
+/**
+ * @description
+ * @author MuNaipeng
+ * @param {*} EV_NAME 事件名称
+ * @param {*} [OPS={}] 事件相关参数
+ */
+const log = (EV_NAME, OPS = {}) => {
+  OPS['channel'] = env.app;
+  try {
+    if (!sessionStorage.getItem('_uid')) {
+      axios({
+        method: 'post',
+        url: TOKEN_URL
+      })
+        .then(res => {
+          if (res.data.success) {
+            let uid = '';
+            if (res.data.data) {
+              uid = res.data.data;
+              sessionStorage.setItem('_uid', uid);
+              commonBurid(EV_NAME, OPS, uid);
+            } else {
+              commonBurid(EV_NAME, OPS, uid);
+            }
+          }
+        })
+        .catch(err => err);
+    } else {
+      const uid = sessionStorage.getItem('_uid');
+      commonBurid(EV_NAME, OPS, uid);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// 注册为全局组件的函数
+export default {
+	install(Vue,appId) {
+    APP.appId = appId;
+    Vue.prototype.$log = log;
+	}
+};

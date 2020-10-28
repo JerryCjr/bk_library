@@ -1,0 +1,12 @@
+{
+<<<<<<< HEAD
+  "name": "babyfs-wechat-jssdk",
+  "version": "0.1.4",
+=======
+  "name": "@babyfs/babyfs-wechat-jssdk",
+  "version": "0.1.0-beta.0.2",
+>>>>>>> cdf30d85436e7fbe731d5b2e646953e8215fe84e
+  "description": "微信官方 js-sdk package包装, 以便npm使用。基于js-sdk 1.6.0版本",
+  "main": "index.js",
+  "author": "Jerry <jerryc_js@163.com>"
+}

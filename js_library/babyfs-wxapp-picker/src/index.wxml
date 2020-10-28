@@ -1,0 +1,6 @@
+<!--components/componentPicker/componentPicker.wxml-->
+<view class="component-picker">
+    <picker class="component-picker-main" mode="multiSelector" bindchange="bindMultiPickerChange" bindcancel="cancelEvent" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range-key="n" range="{{multiArray}}">
+        <slot name="picker"></slot>
+    </picker>
+</view>

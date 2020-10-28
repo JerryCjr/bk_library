@@ -1,0 +1,13 @@
+<view class="container">
+  <canvas
+    class="o-canvas"
+    canvas-id="ocanvas"
+    style="width: 220px; height: 389px;"
+  >
+  </canvas>
+  <view class="func">
+    <button bindtap="choose">choose</button>
+    <button bindtap="draw">draw</button>
+    <button bindtap="store">store</button>
+  </view>
+</view>

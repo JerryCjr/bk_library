@@ -1,0 +1,100 @@
+{
+<<<<<<< HEAD
+  "name": "babyfs-wechat",
+  "version": "2.0.0",
+  "description": "babyfs wechat component",
+  "main": "./dist/babyfsWechat.min.js",
+  "scripts": {
+    "prod": "cross-env NODE_ENV=production node build/prod.js",
+    "dev": "cross-env NODE_ENV=development node build/dev.js",
+    "debug": "cross-env NODE_ENV=development node --inspect=5858 --debug-brk build/dev.js",
+    "lint": "eslint --ext .js,.html --fix --format node_modules/eslint-friendly-formatter src test/unit",
+    "karma": "cross-env BABEL_ENV=test karma start ./test/karma.conf.js",
+    "prepublishOnly": "npm run prod"
+=======
+  "name": "@babyfs/babyfs-wechat",
+  "version": "0.0.5",
+  "description": "微信授权登录,普通微信jssdk和企业微信jssdk初始化及常用方法封装",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit -- --watch",
+    "dev": "webpack-dev-server --mode development --config config/webpack.dev.config.js",
+    "dev:hot": "webpack-dev-server --mode development --config config/webpack.dev.config.js --hot",
+    "dev:inline": "webpack-dev-server --mode development --config config/webpack.dev.config.js --inline",
+    "dev:progress": "webpack-dev-server --mode development --config config/webpack.dev.config.js --progress",
+    "build:dev": "webpack --mode development --config config/webpack.dev.config.js",
+    "build": "webpack --mode production --config config/webpack.prod.config.js",
+    "lint": "eslint './{src,test/unit}/**/*.{js,ts}' --quiet --fix",
+    "test": "cross-env NODE_ENV=test karma start test/karma.conf.js",
+    "prepublishOnly": "webpack --mode production --config config/webpack.prod.config.js"
+>>>>>>> cdf30d85436e7fbe731d5b2e646953e8215fe84e
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "./src/**/*.{js,ts}": [
+      "tsc --noEmit",
+      "eslint --fix"
+    ],
+    "./test/unit/**/*.js": [
+      "eslint --fix"
+    ]
+  },
+  "keywords": [],
+  "author": "Jerry <jerryc_js@163.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/plugin-transform-runtime": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-typescript": "^7.10.1",
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-istanbul": "^6.0.0",
+    "chai": "^4.2.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.3.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "html-webpack-plugin": "^4.3.0",
+    "karma": "^5.1.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage": "^2.0.2",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-mocha": "^2.0.1",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^4.0.2",
+    "lint-staged": "^10.2.11",
+    "mocha": "^8.0.1",
+    "prettier": "^2.0.5",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2",
+    "webpack-node-externals": "^1.7.2",
+    "yorkie": "^2.0.0"
+  },
+  "dependencies": {
+<<<<<<< HEAD
+    "babel-polyfill": "^6.23.0",
+    "babyfs-env": "^1.1.4",
+    "babyfs-request": "^0.4.4",
+    "babyfs-url": "^0.1.7",
+    "babyfs-wechat-jssdk": "^0.1.4"
+=======
+    "@babel/runtime": "^7.10.3",
+    "@babyfs/babyfs-env": "^1.0.8",
+    "@babyfs/babyfs-url": "^1.0.3",
+    "@babyfs/babyfs-wechat-jssdk": "^0.1.0-beta.0.2",
+    "axios": "^0.20.0"
+>>>>>>> cdf30d85436e7fbe731d5b2e646953e8215fe84e
+  }
+}

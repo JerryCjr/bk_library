@@ -1,0 +1,32 @@
+.container {
+  font-style: normal;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+button::after {
+  border: 0;
+}
+.right {
+  right: 0;
+}
+.left {
+  left: 0;
+}
+.ellipsisTwo {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-break: break-all;
+}
+.ellipsisOne {
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+.english-text {
+  font-family: Helvetica;
+}

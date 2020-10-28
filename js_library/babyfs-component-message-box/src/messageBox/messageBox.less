@@ -1,0 +1,76 @@
+.v-message-box{
+    .mask{
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, .3);
+        z-index: 99;
+    }
+    .box{
+        position: fixed;
+        left: 105/750*100%;
+        right: 105/750*100%;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #fff;
+        border-radius: 5px;
+        z-index: 101;
+    }
+    // 内容展示区
+    .message-area{
+        padding: 20px 20px 15px;
+        min-height: 0;
+        text-align: center;
+        color: #333;
+        .title{
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 25px;
+        }
+        .desc{
+            margin-top: 7px;
+            display: inline-block;
+            font-size: 12px;
+            line-height: 20px;
+            text-align: left;
+            p{
+                margin: 5px 0 0;
+                &:first-child{
+                    margin-top: 0;
+                }
+            }
+        }
+        
+    }
+    // 操作区
+    .button-area{
+        margin-top: 5px;
+        border-top: 1px solid #E6E6E6;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 45px;
+        text-align: center;
+        display: flex;
+        .cancel,.confirm{
+            flex: 1 1 auto;
+            cursor: pointer;
+        }
+        .cancel+.confirm{
+            border-left: 1px solid #E6E6E6;
+        }
+        .cancel{
+            color: #999;
+        }
+        .confirm{
+            color: #FF5E4C;
+        }
+    }
+}
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .3s ease;
+  }
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}
